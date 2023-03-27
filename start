@@ -1,0 +1,49 @@
+===============================================Thêm DOM Container vào HTML ===============================================
+ 
+           <!-- ... existing HTML ... -->
+
+          <div id="like_button_container"></div>
+
+          <!-- ... existing HTML ... -->
+ ===============================================Thêm recact vào 1 web===============================================
+       <!-- ... other HTML ... -->
+
+        <!-- Load React. -->
+        <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+        <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+
+        <!-- Load our React component. -->
+        <script src="like_button.js"></script>
+
+      </body>
+
+=> Hai thẻ đầu tiên sẽ load React. Thẻ thứ ba sẽ load component code của bạn.
+
+============================================Tạo một React Component  ============================================T
+'use strict';
+
+const e = React.createElement;
+
+class LikeButton extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { liked: false };
+  }
+
+  render() {
+    if (this.state.liked) {
+      return 'You liked this.';
+    }
+
+    return e(
+      'button',
+      { onClick: () => this.setState({ liked: true }) },
+      'Like'
+    );
+  }
+}
+
+const domContainer = document.querySelector('#like_button_container');
+ReactDOM.render(e(LikeButton), domContainer);
+
