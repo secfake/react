@@ -1,0 +1,38 @@
+Về mặt khái niệm, components cũng giống như các hàm Javascript. Chúng nhận vào bất kì đầu vào nào (còn được gọi là “props”) 
+và trả về các React elements mô tả những gì sẽ xuất hiện trên màn hình.
+
+===============Function Components và Class Components========================================
+
+Cách đơn giản nhất để định nghĩa một component đó là viết một hàm JavaScript:
+
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+
+
+Bạn cũng có thể sử dụng ES6 class để định nghĩa một component:
+
+class Welcome extends React.Component {
+  render() {
+    return <h1>Hello, {this.props.name}</h1>;
+  }
+}
+
+===================Rendering một Component========================
+
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+
+const element = <Welcome name="Sara" />;
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
+
+Chúng ta hãy cùng xem những gì diễn ra ở ví dụ này:
+
+Chúng ta gọi ReactDOM.render() với <Welcome name="Sara" /> element.
+React gọi đến Welcome component với {name: 'Sara'} là props.
+Welcome component của chúng ta trả về kết quả là <h1>Hello, Sara</h1> element.
+React DOM sẽ cập nhật DOM để hiển thị <h1>Hello, Sara</h1>.
